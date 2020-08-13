@@ -19,10 +19,6 @@ npm-debug.log*
 #IDEs
 .idea
 
-#config files
-ormconfig.json
-src/config.ts
-
 # code testing coverage
 coverage
 
