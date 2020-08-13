@@ -1,3 +1,2 @@
-secretfile filter=git-crypt diff=git-crypt
-*.key filter=git-crypt diff=git-crypt
-secretdir/** filter=git-crypt diff=git-crypt
+.envrc filter=git-crypt diff=git-crypt
+ormconfig.json filter=git-crypt diff=git-crypt
