@@ -1,2 +1,0 @@
-.envrc filter=git-crypt diff=git-crypt
-ormconfig.json filter=git-crypt diff=git-crypt
