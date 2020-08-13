@@ -1,0 +1,72 @@
+#!/bin/bash
+
+CMD="${1:-help}"
+
+HELP() {
+    cat <<-EOH
+    pull:   download docker image
+    run:    start docker image
+    bash:   connect to docker image an run sample
+EOH
+
+    exit
+}
+
+DOCKER_IMAGE=mysql/mysql-server:latest
+CONTAINER_NAME=realworld 
+
+run_pull()
+{
+    docker pull $DOCKER_IMAGE
+}
+
+run_start()
+{
+    docker-compose up
+}
+
+run_stop() {
+    docker-compose stop
+}
+
+run_rm() {
+    docker ps --all --filter name=$CONTAINER_NAME -q | xargs -I {} docker rm   {}
+    run_ps
+}
+
+run_logs() {
+    docker ps --all --filter name=$CONTAINER_NAME -q | xargs -I {} docker logs {}
+}
+
+run_bash() {
+    docker exec -it $CONTAINER_NAME /bin/bash
+}
+
+run_ps() {
+    echo docker ps:
+    docker ps -a
+}
+
+set -x
+
+case "$CMD" in 
+    help)   HELP            ;;
+    pull)       run_pull        
+                ;;
+    start|run)  run_start       
+                ;;
+    stop)       run_stop        
+                ;;
+    rm)         run_stop
+                run_rm   
+                ;;
+    bash)       run_bash        
+                ;;
+    ps)         run_ps
+                ;;
+    logs)       run_logs
+                ;;
+    *)
+esac
+
+set +x

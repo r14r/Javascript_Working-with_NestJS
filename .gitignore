@@ -1,0 +1,31 @@
+# Dependency directory
+node_modules
+**/node_modules/
+
+#
+.env/
+**/.env
+
+# Logs
+logs
+*.log
+.DS_Store
+
+npm-debug.log*
+
+# Optional npm cache directory
+.npm
+
+#IDEs
+.idea
+
+#config files
+ormconfig.json
+src/config.ts
+
+# code testing coverage
+coverage
+
+
+dist/*
+**/dist
